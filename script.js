@@ -182,10 +182,22 @@ function addDataToTable(data) {
 
 
 
+
+
+
 // Referências aos elementos do DOM
 const chatBody = document.getElementById('chat-body');
 const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
+
+// Objeto de palavras-chave e respostas
+const keywordResponses = {
+    "olá": "Olá! Tudo bem? Me chamo Giovanna e vou te atender.",
+    "oi": "Oi! Como posso ajudar você?",
+    "ajuda": "Claro! Estou aqui para ajudar. O que você precisa?",
+    "pedido": "Você gostaria de saber o status de um pedido? Me passe mais detalhes.",
+    // Adicione mais palavras-chave e respostas conforme necessário
+};
 
 // Função para adicionar mensagens ao chat
 function addMessage(message, type) {
@@ -196,6 +208,21 @@ function addMessage(message, type) {
     chatBody.scrollTop = chatBody.scrollHeight; // Scroll para o final do chat
 }
 
+// Função para verificar e responder com base em palavras-chave
+function respondToKeyword(message) {
+    // Converte a mensagem para minúsculas para comparação mais flexível
+    const lowerCaseMessage = message.toLowerCase();
+    for (let keyword in keywordResponses) {
+        if (lowerCaseMessage.includes(keyword)) {
+            addMessage(keywordResponses[keyword], 'received');
+            return true; // Para a função após encontrar a primeira palavra-chave
+        }
+    }
+    // Se nenhuma palavra-chave for encontrada, responde de forma genérica
+    addMessage("Desculpe, não entendi. Pode repetir?", 'received');
+    return false;
+}
+
 // Evento de clique no botão de enviar
 sendBtn.addEventListener('click', () => {
     const message = chatInput.value.trim();
@@ -203,7 +230,7 @@ sendBtn.addEventListener('click', () => {
         addMessage(message, 'sent'); // Adiciona a mensagem enviada pelo usuário
         chatInput.value = '';
         setTimeout(() => {
-            addMessage('Resposta automática.', 'received'); // Resposta simulada
+            respondToKeyword(message); // Responde com base em palavras-chave
         }, 1000);
     }
 });
@@ -214,3 +241,4 @@ chatInput.addEventListener('keydown', (event) => {
         sendBtn.click();
     }
 });
+
