@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Menu</title>
+    <title>MAISKAZA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,21 +24,23 @@
                         <a href="#">
                             <i class="icon">🛒</i> Loja
                             <span class="dropdown-icon">▼</span>
+                            <span class="notification-badge">2</span>
                         </a>
                         <ul class="submenu">
                             <li><a href="#">Pontos a Pagar</a></li>
                             <li><a href="#">Pontos a Receber</a></li>
-                            <li><a href="#">Voucher a Receber</a></li>
-                            <li><a href="#">Voucher a Pagar</a></li>
+                            <li><a href="#">Voucher a Receber <span class="notification-dot"></span></a></li>
+                            <li><a href="#">Voucher a Pagar <span class="notification-dot"></span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item dropdown" data-target="construtora-content">
                         <a href="#">
                             <i class="icon">🏗️</i> Construtora
                             <span class="dropdown-icon">▼</span>
+                            <span class="notification-badge">3</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="#">Pontos a Pagar</a></li>
+                            <li><a href="#">Pontos a Pagar <span class="notification-dot"></span></a></li>
                             <li><a href="#">Pontos a receber</a></li>
                         </ul>
                     </li>
@@ -46,6 +48,7 @@
                         <a href="#">
                             <i class="icon">📄</i> Pedido
                             <span class="dropdown-icon">▼</span>
+                            <span class="notification-dot"></span>
                         </a>
                         <ul class="submenu" data-target="loja-construtora-content">
                             <li><a href="#">Construtora</a></li>
@@ -69,7 +72,8 @@
                     </li>
                     <li class="menu-item" data-target="ponto-content">
                         <a href="#">
-                            <i class="icon">📊</i> %Pontos
+                            <i class="icon">📊</i> Chat-Box
+                            <span class="notification-dot"></span>
                         </a>
                     </li>
                     <li class="menu-item" data-target="categoria-content">
@@ -188,8 +192,20 @@
             </section>
 
             <section id="ponto-content" class="content-section">
-                <h1>Pontos</h1>
-                <p>Taxa de pontos a ser aplicado na Construtora e Loja.</p>
+                <h1>Chat-Box</h1>
+                <p>Chat ao-vivo para conversar.</p>
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h3>Chat ao Vivo</h3>
+                    </div>
+                    <div class="chat-body" id="chat-body">
+                        <!-- Mensagens aparecerão aqui -->
+                    </div>
+                    <div class="chat-footer">
+                        <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                        <button id="send-btn">Enviar</button>
+                    </div>
+                </div>
             </section>
 
             <section id="categoria-content" class="content-section">

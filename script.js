@@ -179,3 +179,38 @@ function addDataToTable(data) {
 
     tableBody.appendChild(row);
 }
+
+
+
+// Referências aos elementos do DOM
+const chatBody = document.getElementById('chat-body');
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+
+// Função para adicionar mensagens ao chat
+function addMessage(message, type) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', type);
+    messageElement.textContent = message;
+    chatBody.appendChild(messageElement);
+    chatBody.scrollTop = chatBody.scrollHeight; // Scroll para o final do chat
+}
+
+// Evento de clique no botão de enviar
+sendBtn.addEventListener('click', () => {
+    const message = chatInput.value.trim();
+    if (message) {
+        addMessage(message, 'sent'); // Adiciona a mensagem enviada pelo usuário
+        chatInput.value = '';
+        setTimeout(() => {
+            addMessage('Resposta automática.', 'received'); // Resposta simulada
+        }, 1000);
+    }
+});
+
+// Evento de enviar a mensagem ao pressionar Enter
+chatInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        sendBtn.click();
+    }
+});
