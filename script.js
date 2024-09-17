@@ -133,18 +133,32 @@ function showResponse(response) {
 
 
 // scripts.js
+const addFormBtn = document.getElementById('add-form-btn');
+const formSection = document.getElementById('form-section');
+const saveBtn = document.getElementById('saveButton');
 
-document.getElementById('registrationForm').addEventListener('submit', function (e) {
+// Mostrar o formulário ao clicar no botão
+addFormBtn.addEventListener('click', () => {
+    formSection.classList.toggle('hidden');
+});
+
+saveBtn.addEventListener('click', () => {
+    formSection.classList.add('hidden');
+});
+
+document.getElementById('form-section').addEventListener('submit', function (e) {
     e.preventDefault(); // Previne o comportamento padrão de recarregar a página
 
     // Captura os dados do formulário
     const formData = {
+        select: document.getElementById('select').value,
         nome: document.getElementById('name').value,
         email: document.getElementById('email').value,
         telefone: document.getElementById('phone').value,
         cpf: document.getElementById('cpf').value,
-        endereco: document.getElementById('address').value,
-        mensagem: document.getElementById('message').value
+        date: document.getElementById('date').value,
+        mensagem: document.getElementById('message').value,
+        status: document.getElementById('status').value
     };
 
     // Adiciona os dados à tabela
@@ -169,12 +183,14 @@ function addDataToTable(data) {
     const row = document.createElement('tr');
 
     row.innerHTML = `
+        <td>${data.select}</td>
         <td>${data.nome}</td>
         <td>${data.email}</td>
         <td>${data.telefone}</td>
         <td>${data.cpf}</td>
-        <td>${data.endereco}</td>
+        <td>${data.date}</td>
         <td>${data.mensagem}</td>
+        <td>${data.status}</td>
     `;
 
     tableBody.appendChild(row);
@@ -242,3 +258,30 @@ chatInput.addEventListener('keydown', (event) => {
     }
 });
 
+
+
+
+// Seleciona o título e o conteúdo do dropdown
+const dropdownToggle = document.querySelector('.dropdown-toggle');
+const dropdownContent = document.getElementById('dropdown-content');
+
+// Adiciona evento de clique para mostrar/ocultar o conteúdo do dropdown
+dropdownToggle.addEventListener('click', () => {
+    dropdownContent.classList.toggle('active');
+});
+
+// Ações dos botões
+document.getElementById('filtrar-btn').addEventListener('click', function() {
+    const cpfCnpj = document.getElementById('cpf-cnpj').value;
+    const status = document.getElementById('status').value;
+
+    alert(`Filtrando por CPF/CNPJ: ${cpfCnpj}, Status: ${status}`);
+});
+
+document.getElementById('limpar-btn').addEventListener('click', function() {
+    document.getElementById('search-form').reset();
+});
+
+document.getElementById('exportar-btn').addEventListener('click', function() {
+    alert('Exportando dados...');
+});

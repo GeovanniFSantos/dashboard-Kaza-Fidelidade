@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAISKAZA</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -24,24 +24,28 @@
                         <a href="#">
                             <i class="icon">🛒</i> Loja
                             <span class="dropdown-icon">▼</span>
-                            <span class="notification-badge">2</span>
+                            <span class="notification-badge">3</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="#">Pontos a Pagar</a></li>
-                            <li><a href="#">Pontos a Receber</a></li>
-                            <li><a href="#">Voucher a Receber <span class="notification-dot"></span></a></li>
-                            <li><a href="#">Voucher a Pagar <span class="notification-dot"></span></a></li>
+                            <li><a href="#">Pontos a Receber<span class="notification-dot"></span></a></li>
+                            <li><a href="#">Pontos Recebido</a></li>
+                            <li><a href="#">Voucher a Pagar<span class="notification-dot"></span></a></li>
+                            <li><a href="#">Voucher Pago</a></li>
+                            <li><a data-target="loja-pendet">NF Pendente<span class="notification-dot"></span></a></li>
+                            <li><a data-target="loja-concluid">NF Conclúido</a></li>
                         </ul>
                     </li>
                     <li class="menu-item dropdown" data-target="construtora-content">
                         <a href="#">
                             <i class="icon">🏗️</i> Construtora
                             <span class="dropdown-icon">▼</span>
-                            <span class="notification-badge">3</span>
+                            <span class="notification-badge">2</span>
                         </a>
                         <ul class="submenu">
                             <li><a href="#">Pontos a Pagar <span class="notification-dot"></span></a></li>
                             <li><a href="#">Pontos a receber</a></li>
+                            <li><a data-target="construtora-pendet">NF Pendente<span class="notification-dot"></span></a></li>
+                            <li><a href="#">NF Conclúido</a></li>
                         </ul>
                     </li>
                     <li class="menu-item dropdown" data-target="pedido-content">
@@ -51,14 +55,9 @@
                             <span class="notification-dot"></span>
                         </a>
                         <ul class="submenu" data-target="loja-construtora-content">
-                            <li><a href="#">Construtora</a></li>
-                            <li><a href="#">Loja</a></li>
+                            <li><a href="#">🏗️ Construtora</a></li>
+                            <li><a href="#">🛒 Loja</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-item" data-target="consumidor-content">
-                        <a href="#">
-                            <i class="icon">👥</i> Consumidor Final
-                        </a>
                     </li>
                     <li class="menu-item" data-target="ajuda-content">
                         <a href="#">
@@ -74,11 +73,6 @@
                         <a href="#">
                             <i class="icon">📊</i> Chat-Box
                             <span class="notification-dot"></span>
-                        </a>
-                    </li>
-                    <li class="menu-item" data-target="categoria-content">
-                        <a href="#">
-                            <i class="icon">📋</i> Categoria
                         </a>
                     </li>
                 </ul>
@@ -98,23 +92,156 @@
                 <p>Conteúdo relacionado à loja.</p>
             </section>
 
+            <section id="loja-pendet" class="content-section">
+                <h1>Loja</h1>
+                <p>Notas fiscas Pendentes.</p>
+                <div class="saved-data-container">
+                    <table id="savedDataTable">
+                        <thead>
+                            <tr>
+                                <th>Loja</th>
+                                <th>Número do Pedido</th>
+                                <th>Contato</th>
+                                <th>Data do Pedido</th>
+                                <th>Valor do Pedido</th>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>Loja Teste 1</td>
+                            <td>N012024</td>
+                            <td>(00) 00000-0000</td>
+                            <td>20/09/2024</td>
+                            <td>R$10.000</td>
+                            <td>Teste 1</td>
+                            <td>Pendente</td>
+                        </tbody>
+                        <tbody>
+                            <td>Loja Teste 2</td>
+                            <td>N022024</td>
+                            <td>(11) 00000-0000</td>
+                            <td>29/09/2024</td>
+                            <td>R$20.000</td>
+                            <td>Teste 2</td>
+                            <td>Pendente</td>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="loja-concluid" class="content-section">
+                <h1>Loja</h1>
+                <p>Notas fiscas Conclúidas.</p>
+                <div class="saved-data-container">
+                    <table id="savedDataTable">
+                        <thead>
+                            <tr>
+                                <th>Loja</th>
+                                <th>Número do Pedido</th>
+                                <th>Contato</th>
+                                <th>Data do Pedido</th>
+                                <th>Valor do Pedido</th>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>Loja Teste 1</td>
+                            <td>N012024</td>
+                            <td>(00) 00000-0000</td>
+                            <td>20/09/2024</td>
+                            <td>R$10.000</td>
+                            <td>Teste 1</td>
+                            <td>Conclúido</td>
+                        </tbody>
+                        <tbody>
+                            <td>Loja Teste 2</td>
+                            <td>N022024</td>
+                            <td>(11) 00000-0000</td>
+                            <td>29/09/2024</td>
+                            <td>R$20.000</td>
+                            <td>Teste 2</td>
+                            <td>Conclúido</td>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
             <section id="construtora-content" class="content-section">
                 <h1>Construtora</h1>
                 <p>Conteúdo relacionado à construtora.</p>
+            </section>
+
+            <section id="construtora-pendet" class="content-section">
+                <h1>Construtora</h1>
+                <p>Notas fiscas Pendentes.</p>
+                <div class="saved-data-container">
+                    <table id="savedDataTable">
+                        <thead>
+                            <tr>
+                                <th>Construtora</th>
+                                <th>Número do Pedido</th>
+                                <th>Contato</th>
+                                <th>Data do Pedido</th>
+                                <th>Valor do Pedido</th>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>Construtora Teste 1</td>
+                            <td>N012024</td>
+                            <td>(00) 00000-0000</td>
+                            <td>20/09/2024</td>
+                            <td>R$10.000</td>
+                            <td>Teste 1</td>
+                            <td>Pendente</td>
+                        </tbody>
+                        <tbody>
+                            <td>Construtora Teste 2</td>
+                            <td>N022024</td>
+                            <td>(11) 00000-0000</td>
+                            <td>29/09/2024</td>
+                            <td>R$20.000</td>
+                            <td>Teste 2</td>
+                            <td>Pendente</td>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
             <section id="pedido-content" class="content-section">
                 <h1>Pedido</h1>
                 <p>Conteúdo relacionado a pedidos.</p>
             </section>
-
-            <section id="consumidor-content" class="content-section">
-                <h1>Consumidor Final</h1>
-                <p>Conteúdo relacionado ao consumidor final.</p>
-            </section>
             
             <section id="atendimento-content" class="content-section">
-                <h1>Atendimentos e Dúvidas Realizados</h1>
+               
+                <div class="card-top">
+                    <h1> Atendimentos Realizados </h1>
+                    <button id="add-form-btn" class="add-btn">➕ Adicionar Atendimento</button>
+                </div>
+                <h5></h5>
+                <div class="search-container">
+                    <h2 class="dropdown-toggle">Filtro Avançado</h2>
+                    <div class="filter-section hidden" id="dropdown-content">
+                        <form id="search-form">
+                            <div class="form-group-inline">
+                                <input type="text" id="cpf-cnpj" placeholder="Insira o CPF ou CNPJ">
+                                <select id="status">
+                                    <option value="">Selecione o Status</option>
+                                    <option value="ativo">Resolvido</option>
+                                    <option value="inativo">Pendente</option>
+                                </select>
+                            </div>
+                            <div class="button-group">
+                                <button type="button" id="filtrar-btn" class="btn filter-btn">🔍 Filtrar</button>
+                                <button type="button" id="exportar-btn" class="btn export-btn">📁 Exportar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <p>Atendimentos e Dúvidas Realizados por whatsApp.</p>
                             
                 <div class="saved-data-container">
@@ -122,25 +249,50 @@
                     <table id="savedDataTable">
                         <thead>
                             <tr>
+                                <th>Loja/Construtora</th>
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
                                 <th>CPF/CNPJ</th>
                                 <th>Data</th>
                                 <th>Motivo</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <td>Loja Teste 2</td>
+                            <td>João Carlos</td>
+                            <td>joao@loja.com</td>
+                            <td>(11) 9999-9999</td>
+                            <td>000.000.000-00</td>
+                            <td>20/09/2024</td>
+                            <td>Não Estava conseguindo subir pedido na plataforma.</td>
+                            <td>Resolvido</td>
                             <!-- Os dados salvos serão adicionados aqui dinamicamente -->
                         </tbody>
                     </table>
                 </div>
                 <br>
                 <br>
-                <div class="form-container">
+                <div id="form-section" class="form-section hidden">
                     <h2>Formulário de Cadastro</h2>
-                    <form id="registrationForm">
+                    <form id="atendimento-form">
                         <div class="form-row">
+                            <div class="form-group">
+                                <select for="select" id="select" name="select" >
+                                    <option value="valor1">Loja Teste 1</option>
+                                    <option value="valor2">Loja Teste 2</option>
+                                    <option value="valor3">Loja Teste 3</option>
+                                    <option value="valor4">Construtora Teste 1</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cpf">CPF/CNPJ</label>
+                                <input type="cpf" id="cpf" name="cpf" maxlength="11" required>
+                            </div>
+
                             <div class="form-group">
                                 <label for="name">Nome</label>
                                 <input type="text" id="name" name="name" required>
@@ -149,25 +301,22 @@
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" required>
                             </div>
+
                         </div>
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone">Telefone</label>
-                                <input type="tel" id="phone" name="phone" maxlength="11" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="cpf">CPF/CNPJ</label>
-                                <input type="cpf" id="cpf" name="cpf" maxlength="11" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="address">Data</label>
-                                <input type="date" id="address" name="address" required>
-                            </div>
                             <div class="form-group full-width">
                                 <label for="message">Motivo</label>
                                 <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" maxlength="11" required>
+                                <label for="status">Status</label>
+                                <input type="status" id="status" name="status" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Data</label>
+                                <input type="date" id="date" name="date" required>
                             </div>
                         </div>
                         <button type="submit" id="saveButton">Salvar</button>
@@ -208,10 +357,6 @@
                 </div>
             </section>
 
-            <section id="categoria-content" class="content-section">
-                <h1>Categoria</h1>
-                <p>Conteúdo da categoria das Lojas.</p>
-            </section>
 
         </main>
 
